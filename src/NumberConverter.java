@@ -43,9 +43,12 @@ public class NumberConverter {
 
     public String convertToBinary() {
         int number = Integer.parseInt(displayOriginalNumber().trim());
+        if(base!=10){
+            number = convertToDecimal();
+        }
         String num = "";
         while (number != 0){
-            num += number%2;
+            num = number%2 + num ;
             number = number/2;
         }
         return num;
@@ -53,7 +56,6 @@ public class NumberConverter {
 
 
     public String convertToOctal() {
-        HashMap<Integer, String> map = makeMap();
         int number = Integer.parseInt(displayOriginalNumber().trim());
         if (base!=10) {
             number = convertToDecimal();
@@ -66,7 +68,7 @@ public class NumberConverter {
         return num;
     }
     public String convertToHex(){
-        HashMap<Integer, String> map = makeMap();
+        HashMap map = makeMap();
         int number = Integer.parseInt(displayOriginalNumber().trim());
         if(base!=10) {
             number = convertToDecimal();
